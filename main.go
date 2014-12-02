@@ -123,8 +123,13 @@ func OutputSwitch(key string, v interface{}) {
 		fmt.Println(key + "_type=int")
 		fmt.Println(key + "_value=" + strconv.Itoa(v.(int)))
 	case float64:
-		fmt.Println(key + "_type=float")
-		fmt.Println(key + "_value=" + strconv.FormatFloat(v.(float64), 'f', 4, 64))
+		if v.(float64) == float64(int(v.(float64))) {
+			fmt.Println(key + "_type=int")
+			fmt.Println(key + "_value=" + strconv.Itoa(int(v.(float64))))
+		} else {
+			fmt.Println(key + "_type=float")
+			fmt.Println(key + "_value=" + strconv.FormatFloat(v.(float64), 'f', 4, 64))
+		}
 	case bool:
 		fmt.Println(key + "_type=bool")
 		fmt.Println(key + "_value=" + strconv.FormatBool(v.(bool)))
