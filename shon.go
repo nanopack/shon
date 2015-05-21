@@ -133,6 +133,9 @@ func OutputSwitch(key string, v interface{}) {
 	case bool:
 		fmt.Println(key + "_type=bool")
 		fmt.Println(key + "_value=" + strconv.FormatBool(v.(bool)))
+	case nil:
+		fmt.Println(key + "_type=nil")
+		fmt.Println(key + "_value=")
 	default:
 		fmt.Println("I dont know how to deal with ", reflect.TypeOf(v))
 		os.Exit(1)
