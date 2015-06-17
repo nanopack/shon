@@ -123,6 +123,7 @@ func OutputSwitch(key string, v interface{}) {
 		OutputMap(key+"_", v)
 	case []interface{}:
 		fmt.Println(key + "_type=array")
+		fmt.Println(key + "_length="+strconv.Itoa(len(v)))
 		OutputArray(key+"_", v)
 	case string:
 		fmt.Println(key + "_type=string")
