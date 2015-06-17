@@ -2,7 +2,7 @@
 
 dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 shon="${dir}/../shon"
-payload='{"one": {"a": "ay"}, "two": {"b": "bee"}}'
+payload='{"one": {"a": "ay"}, "two": {"b": "bees are so cool"}}'
 
 # turn JSON payload into local variables
 eval $(echo $payload | $shon)

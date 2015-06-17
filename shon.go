@@ -127,7 +127,8 @@ func OutputSwitch(key string, v interface{}) {
 		OutputArray(key+"_", v)
 	case string:
 		fmt.Println(key + "_type=string")
-		fmt.Println(key + "_value=" + v.(string))
+		fmt.Print(key + "_value=")
+		fmt.Printf("%q\n", v.(string))
 	case int:
 		fmt.Println(key + "_type=int")
 		fmt.Println(key + "_value=" + strconv.Itoa(v.(int)))
