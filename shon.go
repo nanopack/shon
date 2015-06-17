@@ -10,18 +10,26 @@ import (
 )
 
 func main() {
-	bytes, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		fmt.Println("error:", err)
-		os.Exit(1)
-	}
-	if len(bytes) == 0 {
-		fmt.Println("please provide json on stdin using pipes")
-		os.Exit(1)
-	} else {
-		body := ParseJson(bytes)
+
+	if len(os.Args) == 2 {
+		json := os.Args[1]
+		body := ParseJson([]byte(json))
 		Output(body)
+	} else {
+		bytes, err := ioutil.ReadAll(os.Stdin)
+		if err != nil {
+			fmt.Println("error:", err)
+			os.Exit(1)
+		}
+		if len(bytes) == 0 {
+			fmt.Println("please provide json on stdin using pipes")
+			os.Exit(1)
+		} else {
+			body := ParseJson(bytes)
+			Output(body)
+		}
 	}
+	
 }
 
 func ParseJson(b []byte) interface{} {
