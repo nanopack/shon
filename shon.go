@@ -7,6 +7,7 @@ import (
 	"os"
 	"reflect"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -128,7 +129,9 @@ func OutputSwitch(key string, v interface{}) {
 	case string:
 		fmt.Println(key + "_type=string")
 		fmt.Print(key + "_value=")
-		fmt.Printf("%q\n", v.(string))
+		str := v.(string)
+		str = strings.Replace(str, `'`, `'"'"'`, -1)
+		fmt.Printf("'%s'\n",str)
 	case int:
 		fmt.Println(key + "_type=int")
 		fmt.Println(key + "_value=" + strconv.Itoa(v.(int)))
